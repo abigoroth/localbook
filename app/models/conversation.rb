@@ -7,7 +7,7 @@ class Conversation < ApplicationRecord
   validates_uniqueness_of :sender_id, :scope => :receiver_id
 
   scope :involving, -> (user) do
-    where("conversations.sender_id =? OR conversations.recipient_id =?",user.id,user.id)
+    where("conversations.sender_id =? OR conversations.receiver_id =?",user.id,user.id)
   end
 
   scope :between, -> (sender_id,receiver_id) do
