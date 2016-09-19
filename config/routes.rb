@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   get 'dashboard/index'
+  resource :profile
 
   resources :comments
   resources :wallposts
+   resources :user_friends
 
   devise_for :users
   
