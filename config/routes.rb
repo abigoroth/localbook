@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :profile
+
   resources :comments
   resources :wallposts
 
