@@ -1,0 +1,1 @@
+json.partial! "wallposts/wallpost", wallpost: @wallpost
