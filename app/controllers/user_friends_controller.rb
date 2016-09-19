@@ -1,10 +1,13 @@
 class UserFriendsController < ApplicationController
-  before_action :set_user_friend, only: [:show, :edit, :update, :destroy]
+
+  #before_action :set_user_friend, only: [:show, :edit, :update, :destroy]
 
   # GET /user_friends
   # GET /user_friends.json
   def index
+	@users=User.all.where.not(id:current_user.id)
     @user_friends = UserFriend.all
+	@friends= current_user.user_friends.pluck(:id)
   end
 
   # GET /user_friends/1
@@ -24,11 +27,11 @@ class UserFriendsController < ApplicationController
   # POST /user_friends
   # POST /user_friends.json
   def create
-    @user_friend = UserFriend.new(user_friend_params)
+    @user_friend = current_user.user_friends.build(:friend_id => params[:friend_id])
 
     respond_to do |format|
       if @user_friend.save
-        format.html { redirect_to @user_friend, notice: 'User friend was successfully created.' }
+        format.html { redirect_to @user_friend, notice: 'Friend successfully added to friendlist' }
         format.json { render :show, status: :created, location: @user_friend }
       else
         format.html { render :new }
@@ -54,7 +57,8 @@ class UserFriendsController < ApplicationController
   # DELETE /user_friends/1
   # DELETE /user_friends/1.json
   def destroy
-    @user_friend.destroy
+  @user_friend= UserFriend.find_by(user_id:params[:id],friend_id:params[:friend_id])
+    @user_friend.destroy if  @user_friend
     respond_to do |format|
       format.html { redirect_to user_friends_url, notice: 'User friend was successfully destroyed.' }
       format.json { head :no_content }

@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :conversations, :foreign_key => :sender_id
+  has_many :user_friends
+  has_many :friends, :through => :user_friends
 end
