@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919082855) do
+ActiveRecord::Schema.define(version: 20160919085303) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "wallpost_id"
+    t.string   "comment_message"
+    t.date     "comment_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -29,6 +38,13 @@ ActiveRecord::Schema.define(version: 20160919082855) do
     t.datetime "updated_at",      null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "user_friends", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +66,15 @@ ActiveRecord::Schema.define(version: 20160919082855) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wallposts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "wall_status"
+    t.date     "wall_date"
+    t.string   "wall_emotion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
