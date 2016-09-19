@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :wallposts
   devise_for :users
   resources :users
   devise_for :user_ls

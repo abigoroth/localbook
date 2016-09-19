@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  wall_status: MyText
+  wall_date: 2016-09-19
+  wall_emotion: MyString
+
+two:
+  user_id: 1
+  wall_status: MyText
+  wall_date: 2016-09-19
+  wall_emotion: MyString

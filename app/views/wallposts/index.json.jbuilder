@@ -1,0 +1,1 @@
+json.array! @wallposts, partial: 'wallposts/wallpost', as: :wallpost
