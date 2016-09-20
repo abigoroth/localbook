@@ -4,7 +4,9 @@ class WallpostsController < ApplicationController
   # GET /wallposts
   # GET /wallposts.json
   def index
-    @wallposts = Wallpost.all
+    @wallposts = Wallpost.all.where(user_id: current_user.user_friends.pluck(:friend_id)<<current_user.id).order('created_at DESC')
+    @comment = Comment.new
+  
   end
 
   # GET /wallposts/1
@@ -25,10 +27,10 @@ class WallpostsController < ApplicationController
   # POST /wallposts.json
   def create
     @wallpost = Wallpost.new(wallpost_params)
-
+  
     respond_to do |format|
       if @wallpost.save
-        format.html { redirect_to @wallpost, notice: 'Wallpost was successfully created.' }
+        format.html { redirect_to :back, notice: 'Wallpost was successfully created.' }
         format.json { render :show, status: :created, location: @wallpost }
       else
         format.html { render :new }
@@ -71,4 +73,7 @@ class WallpostsController < ApplicationController
     def wallpost_params
       params.require(:wallpost).permit(:user_id, :wall_status, :wall_date, :wall_emotion)
     end
+
+    
 end
+
