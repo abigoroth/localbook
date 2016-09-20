@@ -1,18 +1,18 @@
-<h1>Messages</h1>
-<p>
+  <div class="container">
+    <h4>Messages</h4>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
   <% end %>
-  <div class="ui segment">
+  <div class="panel panel-default">
    <% @messages.each do |message| %>
     <% if message.body %>
      <% user = User.find(message.user_id) %>
-     <div class="item">
+     <div class="panel-body">
       <div class="content">
-       <div class="header"><strong><%= user.email %></strong>     <%= message.message_time %></div>
+       <div class="header"><strong><%= user.email %></strong>&nbsp;<%= message.message_time %></div>
         <div class="list">
-         <div class="item">
-          <i class="right triangle icon"></i>
+         <div >
+
            <%= message.body %>
         </div>
       </div>
@@ -23,11 +23,14 @@
   </div>
   <%= simple_form_for [@conversation, @message] do |f| %>
    <div class="field">
-     <%= f.text_area :body, class: 'form-control' %>
+     <%= f.text_area :body, class: 'form-control', autofocus: true  %>
    </div>
    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-   <div>
-     <%= f.submit 'Add Reply' %>
+   <br>
+   <div class="actions">
+     <%= f.submit 'Submit', class: 'btn btn-success'%>
    </div>
   <% end %>
-</p>
+
+<!--container end -->
+</div>

@@ -1,5 +1,4 @@
 
-<p>
 <div class="container"> <!--container -->
   <div class="row">
 
@@ -16,7 +15,7 @@
       </td>
        <td>
        <a href="<%= conversations_path(sender_id: current_user.id, receiver_id: user.id) %>" class="btn btn-success" data-method="post">Message</a>
-        <% if !@friends.include?(user.id)%><a href="<%=user_friends_path(id: current_user.id, friend_id: user.id)%>" class="btn btn-default" data-method="post"><span class="glyphicon glyphicon-plus"></span>Add Friend</a><% end %>
+        <% if !@friends.include?(user.id)%><a href="<%=user_friends_path(id: current_user.id, friend_id: user.id)%>" class="btn btn-default" data-method="post"><span class="glyphicon glyphicon-plus"></span> Follow</a><% else %><span class="glyphicon glyphicon-ok"></span><% end %>
       </td>
       <% end %>
     </tr>
@@ -27,7 +26,7 @@
     </div>
     <div class="col-sm-7">
       <div class="panel panel-default">
-      <div class="panel-heading"><strong>Inbox (<%=@inbox.count%>)</strong></div>
+      <div class="panel-heading"><strong>Inbox</strong></div>
       <table class="table">
       <% @conversations.each do |conversation| %>
    <% if conversation.sender_id == current_user.id || conversation.receiver_id == current_user.id %>
@@ -51,4 +50,3 @@
 
 
 </div><!--container -->
-</p>
