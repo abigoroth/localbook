@@ -7,7 +7,7 @@ class UserFriendsController < ApplicationController
   def index
 	@users=User.all.where.not(id:current_user.id)
     @user_friends = UserFriend.all
-	@friends= current_user.user_friends.pluck(:id)
+	@friends= current_user.user_friends.pluck(:friend_id)
   end
 
   # GET /user_friends/1
@@ -31,7 +31,7 @@ class UserFriendsController < ApplicationController
 
     respond_to do |format|
       if @user_friend.save
-        format.html { redirect_to @user_friend, notice: 'Friend successfully added to friendlist' }
+        format.html { redirect_to user_friends_path, notice: 'Friend successfully added to friendlist' }
         format.json { render :show, status: :created, location: @user_friend }
       else
         format.html { render :new }
@@ -57,8 +57,8 @@ class UserFriendsController < ApplicationController
   # DELETE /user_friends/1
   # DELETE /user_friends/1.json
   def destroy
-  @user_friend= UserFriend.find_by(user_id:params[:id],friend_id:params[:friend_id])
-    @user_friend.destroy if  @user_friend
+  @user_friend= UserFriend.find_by(user_id: current_user.id,friend_id:params[:friend_id])
+    @user_friend.destroy #if @user_friend
     respond_to do |format|
       format.html { redirect_to user_friends_url, notice: 'User friend was successfully destroyed.' }
       format.json { head :no_content }

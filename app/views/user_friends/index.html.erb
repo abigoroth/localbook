@@ -2,7 +2,8 @@
 
 <h1>User Friends</h1>
 
-<table>
+<table class="table">
+
   <thead>
     <tr>
       <th>Name</th>
@@ -17,7 +18,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><% if @friends.include?(user.id)%><%= link_to 'remove friend', user_friend_path(id: current_user.id, friend_id: user.id), method: :delete %><%else%><%= link_to 'add friend', "#" %></td><%end%>
+        <td><% if @friends.include?(user.id)%><%= link_to 'remove friend', user_friend_path(id: current_user.id, friend_id: user.id), method: :delete %><%else%><%= link_to 'add friend', user_friends_path(id: current_user.id, friend_id: user.id), method: :post %></td><%end%>
       
       </tr>
     <% end %>
