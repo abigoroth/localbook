@@ -1,7 +1,7 @@
 <h1>Profile</h1>
 
 <p id="notice"><%= notice %></p>
-
+<div class= "row">
 <div class="col-sm-5">
   <div class="panel panel-default">
    <div class="panel-body">
@@ -33,11 +33,6 @@
 
   </div>
 </div>
-
-
-
-
-
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -57,3 +52,17 @@
       </div>  
 
     </div>
+</div>
+
+ 
+ 
+ </div>
+<div class="col-sm-5">
+  <div class="panel panel-default">
+   <div class="panel-body">
+   <%= render "user_friends/list" %>
+   </div>
+ </div>
+ </div>
+ 
+ </div>

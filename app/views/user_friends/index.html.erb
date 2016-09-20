@@ -1,29 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>User Friends</h1>
-
-<table class="table">
-
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th></th>
-      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><% if @friends.include?(user.id)%><%= link_to 'remove friend', user_friend_path(id: current_user.id, friend_id: user.id), method: :delete %><%else%><%= link_to 'add friend', user_friends_path(id: current_user.id, friend_id: user.id), method: :post %></td><%end%>
-      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "list" %>
 
 <br>
 
