@@ -1,32 +1,54 @@
-<h1>Conversation</h1>
+
 <p>
-  <div class="">
-    <div class="">
-     <% @conversations.each do |conversation| %>
-     <% if conversation.sender_id == current_user.id || conversation.receiver_id == current_user.id %>
-      <% if conversation.sender_id == current_user.id %>
-        <% receiver = User.find(conversation.receiver_id) %>
-      <% else %>
-        <% receiver = User.find(conversation.sender_id) %>
+<div class="container"> <!--container -->
+  <div class="row">
+
+    <div class="col-sm-5" >
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>People</strong></div>
+
+        <table class="table table-default">
+       <% @users.each do |user| %>
+       <tr>
+        <% if user.id != current_user.id %>
+       <td>
+       <%= user.email %>
+      </td>
+       <td>
+       <a href="<%= conversations_path(sender_id: current_user.id, receiver_id: user.id) %>" class="btn btn-success" data-method="post">Message</a>
+        <% if !@friends.include?(user.id)%><a href="<%=user_friends_path(id: current_user.id, friend_id: user.id)%>" class="btn btn-default" data-method="post"><span class="glyphicon glyphicon-plus"></span>Add Friend</a><% end %>
+      </td>
       <% end %>
-      <%= link_to receiver.email,   conversation_messages_path(conversation)%>
+    </tr>
      <% end %>
-    <% end %>
+
+     </table>
+      </div>
     </div>
-   </div>
+    <div class="col-sm-7">
+      <div class="panel panel-default">
+      <div class="panel-heading"><strong>Inbox (<%=@inbox.count%>)</strong></div>
+      <table class="table">
+      <% @conversations.each do |conversation| %>
+   <% if conversation.sender_id == current_user.id || conversation.receiver_id == current_user.id %>
+    <% if conversation.sender_id == current_user.id %>
+      <% receiver = User.find(conversation.receiver_id) %>
+    <% else %>
+      <% receiver = User.find(conversation.sender_id) %>
+    <% end %>
+    <tr>
+    <td>
+      <%= receiver.email %></td>
+      <td><a href="<%= conversation_messages_path(conversation)%>" data-method="get" class="btn btn-success">See Conversation</a></td>
+  </tr>
+   <% end %>
+  <% end %>
+</table>
+</div>
+</div>
+    </div>
   </div>
 
-  <div>
- <h3>All Users</h3>
-  <div class="">
-   <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
-     <div class="">
-   <%= user.email %>
-   <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: 'post'%>
- </div>
-  <% end %>
- <% end %>
- </div>
-</div>
+
+</div><!--container -->
 </p>

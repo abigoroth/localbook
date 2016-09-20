@@ -3,6 +3,9 @@ class ConversationsController < ApplicationController
   def index
     @users = User.all
     @conversations = Conversation.all
+    @user_friends = UserFriend.all
+	  @friends= current_user.user_friends.pluck(:friend_id)
+    @inbox = current_user.conversations.pluck(:sender_id)
   end
 
   def create
