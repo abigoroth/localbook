@@ -3,7 +3,6 @@
 <p id="notice"><%= notice %></p>
 
 <div class="col-sm-3">
-
   <div class="panel panel-default">
    <div class="panel-body">
 
@@ -38,34 +37,30 @@
 
 
 <div class="col-sm-3">
-
   <div class="panel panel-default">
    <div class="panel-body">
-<p>
-  <strong>Wall status:</strong>
-  <%= @wallpost.wall_status %>
-</p>
+    <p>
+      <strong>Wall status:</strong>
+      <%= @wallpost.wall_status %>
+    </p>
 
-<p>
-  <strong>Wall date:</strong>
-  <%= @wallpost.wall_date %>
-</p>
+    <p>
+      <strong>Wall date:</strong>
+      <%= @wallpost.wall_date %>
+    </p>
 
-<p>
-  <strong>Wall emotion:</strong>
-  <%= @wallpost.wall_emotion %>
-</p>
+    <p>
+      <strong>Wall emotion:</strong>
+      <%= @wallpost.wall_emotion %>
+    </p>
 
-<%= link_to 'Edit', edit_wallpost_path(@wallpost) %> |
-<%= link_to 'Back', wallposts_path %>
-   </div>
-   </div>
-   </div>
-
-
+    <%= link_to 'Edit', edit_wallpost_path(@wallpost) %> |
+    <%= link_to 'Back', wallposts_path %>
+  </div>
+</div>
+</div>
 
 
-<div class="modal-dialog" >
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -85,4 +80,3 @@
       </div>  
 
     </div>
-  </div>

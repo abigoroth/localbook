@@ -17,10 +17,10 @@
 
 
         <!-- main right col -->
-        <div class="column col-sm-10 col-xs-11" id="main">
+        <div class="column col-sm-20 col-xs-11" id="main">
 
           <!-- top nav -->
-          <div class="navbar navbar-blue navbar-static-top">  
+          <div class="navbar navbar-blue navbar-static-top">
             <div class="navbar-header">
               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle</span>
@@ -49,19 +49,28 @@
                 <li>
                   <a href="#"><span class="badge">badge</span></a>
                 </li>
-                  <li>
+                <li>
                   <a href="/dashboard/index">Timeline</a>
                 </li>
 
               </ul>
               <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
+                  <ul class="dropdown-menu">
 
-                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                    <li><a href="/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                    <li><a href="<%= conversations_path %>" ><span class="glyphicon glyphicon-envelope"></span>&nbsp;Conversation</a></li>
+
+                    <% if user_signed_in? %> 
+                    <li><a data-method="delete" href="/users/sign_out">Sign Out</a></li>
+                    <% end %>
+                  </ul></li>
 
 
-                <% if user_signed_in? %> 
-                <li><a data-method="delete" href="/users/sign_out"><span class="glyphicon glyphicon-log-out"> Sign Out</a></li>
-                <% end %>
+
+
+
 
 
               </ul>
@@ -81,7 +90,7 @@
           
           <div class="row" id="footer">
             <div class="col-sm-6">
-              
+
             </div>
             <div class="col-sm-6">
               <hr>
@@ -127,7 +136,7 @@
         <div>
           <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
           <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
