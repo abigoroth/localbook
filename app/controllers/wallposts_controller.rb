@@ -58,7 +58,7 @@ class WallpostsController < ApplicationController
   def destroy
     @wallpost.destroy
     respond_to do |format|
-      format.html { redirect_to wallposts_url, notice: 'Wallpost was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Wallpost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
