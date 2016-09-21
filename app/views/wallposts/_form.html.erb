@@ -12,20 +12,37 @@
   <% end %>
 
 
-  <%= f.hidden_field :user_id , value:wallpost.user_id %>
+<div class="row">
+   <div class="col-sm-2"></div>
+      <div class="col-sm-8">.
+          <div class="well well-lg" > 
+            <h4>What's New</h4>
+              <form class="form-horizontal" role="form">
+                  <div class="form-group" style="padding:14px;">
+                      <%= f.hidden_field :user_id , value:wallpost.user_id %>
+                  
+                  <div class="field">
+                      <%= f.label :wall_status %><br>
+                      <%= f.text_area :wall_status ,placeholder: "What you think..." , class:"col-lg-12"%><br>
+                  </div>
 
 
-  <div class="field">
-    <%= f.label :wall_status %><br>
-    <%= f.text_area :wall_status %>
-  </div>
+                  <div class="field">
+                      
+                  <%= f.label :wall_emotion %><br>
+                  <%= f.text_field :wall_emotion , placeholder: "What you feel..." , class:"col-lg-12"%><br>
 
-  <div class="field">
-    <%= f.label :wall_emotion %><br>
-    <%= f.text_field :wall_emotion %>
-  </div>
-<br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+                  </div>
+                
+                
+                  <br><div class="actions">
+                      <%= f.submit class: "btn btn-primary pull-right"%>
+                  </div>
+                  <% end %>
+              </form>
+          </div>
+      </div>  
+  <div class="col-sm-1"></div>
+</div>
+
+
