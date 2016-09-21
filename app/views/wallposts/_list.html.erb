@@ -1,39 +1,51 @@
-<div class="row">
-  <div class="col-md-7","col-md-7">
+
+
 
 <% wallpost = Wallpost.new(user_id: current_user.id) %>
 
 <%= render "wallposts/form", :wallpost => wallpost %>
 
+ <div class="row">
+      <div class="col-sm-3"></div>
 
+      <div class="col-sm-6">.
+   
+        
+         <div class="well well-lg" >
 
-    <% @wallposts.each do |wallpost| %>
-        <br>
-        <br><b>User : <%= wallpost.user.email %></b>
-         <br>Submmitted : <span><%= wallpost.created_at.strftime("%d/%m/%y at %l:%M %p") %></span>
-        <br><%= wallpost.wall_status %>
-        <br>Feeling : <%= wallpost.wall_emotion %></br>
-        <td><%= link_to 'Show', wallpost %></td>
-        <td><%= link_to 'Edit', edit_wallpost_path(wallpost) %></td>
-        <td><%= link_to 'Destroy', wallpost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
- <div id="comments">
-    <h3><%= wallpost.comments.count%> Comments</h3>
-     
-    <% wallpost.comments.each do |comment|%>
-    <b><span> <%= comment.user.email %> </span></b>
-    <span> <%= comment.comment_message %> </span><br>
-     <span><%= comment.created_at.strftime("%d/%m/%y at %l:%M %p") %></span>
-    <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           
 
-    <br>
+    
+              <% @wallposts.each do |wallpost| %><br>
+              <br><div class="panel panel-default">
+              <div class="panel-heading"><b><h4><%= wallpost.user.email %></b><span> feeling <%= wallpost.wall_emotion %></h4></br><span> Submmitted : <span><%= wallpost.created_at.strftime("%d/%m/%y at %l:%M %p") %></span></div>
+              
+              
+              <div class="panel-body">
+              <br><h4><%= wallpost.wall_status %></h4><br>
+              
+              </div>
+              </div>
+              <td><%= link_to 'Edit', edit_wallpost_path(wallpost) %></td>
+              <td><%= link_to 'Destroy', wallpost, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+  
+         
+              <div id="comments">
+                  <h3><p><%= wallpost.comments.count%> Comments</p></h3>
+                  <% wallpost.comments.each do |comment|%>
+                  <div class="panel panel-default">
 
-    <% end %>
-    <h3>Add a comment:</h3>
-    <% @comment= wallpost.comments.build(user_id: current_user.id) %>
-        <%= render "comments/form" %>
-    </div>
-    <% end %>
-
-</div></div>
+                  <b><span> <%= comment.user.email %> </span></b>
+                  <span> <%= comment.comment_message %> </span><br>
+                  <span><%= comment.created_at.strftime("%d/%m/%y at %l:%M %p") %></span>
+                  <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+                  <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td><br>
+</div>
+            <% end %>
+       
+            Comment:<br>
+            <% @comment= wallpost.comments.build(user_id: current_user.id) %>
+            <%= render "comments/form" %>
+            <% end %>
+      
+      <div class="col-sm-2"></div>
