@@ -13,6 +13,9 @@
 		<%= f.input :name %>
 		<%= f.input :gender, as: :select, collection: ["Male", "Female"], include_blank: false%> 
 		<%= f.input :birthday, :start_year=>1950, :end_year=>2016 %>
+		<%= f.input :age %>
+		<%= f.input :city %>
+		<%= f.input :relationship_status, as: :select, collection: ["Single", "In a Realtionship", "Engaged", "Married", "Complicated", "Divorced", "Broken Hearted" ], include_blank: false%> 
 	</div>
 
 
