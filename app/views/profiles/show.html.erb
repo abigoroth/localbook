@@ -5,8 +5,8 @@
     <div class="panel panel-default">
      <div class="panel-body">
 
-        <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
-        <p class="lead"><%= @user.name %></p>
+      <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
+      <p class="lead"><%= @user.name %></p>
 
       <p><strong>Email:</strong><%= @user.email %></p>
 
@@ -27,54 +27,36 @@
 
   <div class="panel panel-default">
     <div class="panel-heading"><h4>About me</h4></div>
-
     <div class="panel-body">
       <p><%= @user.about %></p> 
     </div>
   </div>
 
-<div class="panel panel-default">
-        <div class="panel-body">
-          <p class="lead">My Websites</p>
 
-          <p>
-            <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="28px" height="28px">
-            <img src="http://www.freeiconspng.com/uploads/tumblr-logo-icon-1.png" width="28px" height="28px">
-            <img src="https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg" width="28px" height="28px">
-          </p>
-        </div>
-        </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p class="lead">My Websites</p>
+      <p>
+        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="28px" height="28px">
+        <img src="http://www.freeiconspng.com/uploads/tumblr-logo-icon-1.png" width="28px" height="28px">
+        <img src="https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg" width="28px" height="28px">
+      </p>
+    </div>
+  </div>
 </div>
-
-
-
-
 
 
 <div class="col-sm-7">
-      <div class="well"><a href="/user_friends" class="pull-right">View all</a><h4>Friends (1000)</h4></div>
+  <div class="well"><a href="/user_friends" class="pull-right">View all</a><h4>Friends (1000)</h4></div>
 
-<div class="well"> 
-      <form class="form-horizontal" role="form">
-      
-         <%= render 'wallposts/list' %>
-      
-      </form>
-    </div>
-
-
- </div>
+  <div class="well"><form class="form-horizontal" role="form"><%= render 'wallposts/list' %></form></div>
+</div>
 
 </div>
 
 </div>
 
- 
- <div class="col-sm-5" >
- 
- </div> 
- </div>
 
-
-
-
+<div class="col-sm-5" ></div> 
+</div>
