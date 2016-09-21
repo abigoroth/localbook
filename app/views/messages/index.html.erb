@@ -1,4 +1,4 @@
-  <div class="container" style="height: 500px;">
+  <div class="container" style="width:700px; height: 1000px;">
     <h4>Messages</h4>
   <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
@@ -23,7 +23,7 @@
   </div>
   <%= simple_form_for [@conversation, @message] do |f| %>
    <div class="field">
-     <%= f.text_area :body, class: 'form-control', autofocus: true  %>
+     <%= f.text_field :body, class: 'form-control', autofocus: true  %>
    </div>
    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
    <br>
