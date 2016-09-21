@@ -8,20 +8,17 @@
         <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
         <p class="lead"><%= @user.name %></p>
 
-      <p>
-        <strong>Email:</strong>
-        <%= @user.email %>
-      </p>
+      <p><strong>Email:</strong><%= @user.email %></p>
 
-      <p>
-        <strong>Gender:</strong>
-        <%= @user.gender %>
-      </p>
+      <p><strong>Gender:</strong><%= @user.gender %></p>
 
-      <p>
-        <strong>Birthday:</strong>
-        <%= @user.birthday %>
-      </p>
+      <p><strong>Birthday:</strong><%= @user.birthday %></p>
+
+      <p><strong>Age:</strong><%= @user.age %></p>
+
+      <p><strong>City:</strong><%= @user.city %></p>
+
+      <p><strong>Relationship Status:</strong><%= @user.relationship_status %></p>
 
     </div>
   </div>
@@ -47,6 +44,8 @@
           </p>
         </div>
         </div>
+<%= render 'wallposts/list' %>
+
 </div>
 
 
@@ -57,15 +56,7 @@
 <div class="col-sm-7">
       <div class="well"><a href="/user_friends" class="pull-right">View all</a><h4>Friends (1000)</h4></div>
 
-<div class="well"> 
-      <form class="form-horizontal" role="form">
-        <h4>What's New</h4>
-        <div class="form-group" style="padding:14px;">
-          <textarea class="form-control" placeholder="Update your status"></textarea>
-        </div>
-        <button class="btn btn-primary pull-right" type="button">Post</button><ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
-      </form>
-    </div>
+
 
 
       <div class="panel panel-default">
@@ -95,11 +86,6 @@
 </div>
 
 </div>
-
- 
- <div class="col-sm-5" >
-  <%= render 'wallposts/list' %>
- </div>
  </div>
 
 
